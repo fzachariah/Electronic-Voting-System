@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators [ 
+
+<!ELEMENT validators (field|validator)+>
+
+<!ELEMENT field (field-validator+)>
+<!ATTLIST field
+	name CDATA #REQUIRED
+>
+
+<!ELEMENT field-validator (param*, message)>
+<!ATTLIST field-validator
+	type CDATA #REQUIRED
+    short-circuit (true|false) "false"
+>
+
+<!ELEMENT validator (param*, message)>
+<!ATTLIST validator
+	type CDATA #REQUIRED
+    short-circuit (true|false) "false"
+>
+
+<!ELEMENT param (#PCDATA)>
+<!ATTLIST param
+    name CDATA #REQUIRED
+>
+
+<!ELEMENT message (#PCDATA)>
+<!ATTLIST message
+    key CDATA #IMPLIED
+>
+
+
+]>
+
+<validators>
+	<field name="electionBean.name">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Name is required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">15</param>
+			<message>Name should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="electionBean.district">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>District is required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">15</param>
+			<message>District name should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="electionDate">
+		<field-validator type="required" short-circuit="true">
+			<message>Election Date is Required</message>
+		</field-validator>	
+	</field>
+	
+	<field name="electionBean.constituency">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Constituency is Required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">15</param>
+			<message>Constituency name should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="countingDate">
+		<field-validator type="required" short-circuit="true">
+			<message>Counting Date is Required</message>
+		</field-validator>	
+	</field>
+	
+</validators>

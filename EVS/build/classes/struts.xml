@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+    <package name="default" extends="struts-default">
+        <action name="UserAction"  class="com.wipro.evs.action.UserAction" method="login">
+            <result name="A">/AdminHomePage.jsp</result>
+            <result name="V">/VoterHomePage.jsp</result>
+            <result name="E">/EOHomePage.jsp</result>
+            <result name="INVALID">/registerUser.jsp</result>
+            <result name="FAIL">/Error.jsp</result>
+            <result name="input">/LoginPage.jsp</result>
+            
+            </action>
+            <action name="ChangeAction"  class="com.wipro.evs.action.UserAction" method="changePassword">
+            <result name="SUCCESS">/LoginPage.jsp</result>
+            <result name="INVALID">/ChangepasswordAdmin.jsp</result>
+            <result name="input">/ChangepasswordAdmin.jsp</result>
+            <result name="FAIL">/ChangepasswordAdmin.jsp</result>
+            </action>
+            
+            <action name="RegisterAction"  class="com.wipro.evs.action.VoterAction" method="registerVoter">
+            <result name="SUCCESS">/LoginPage.jsp</result>
+            <result name="FAILURE">/Failure.jsp</result>
+            <result name="input">/registerUser.jsp</result>
+            </action>
+            
+            <action name="ElectionAction"  class="com.wipro.evs.action.AdministratorAction" method=" addElection">
+            <result name="SUCCESS">/AdminHomePage.jsp</result>
+            <result name="FAILURE">/Failure.jsp</result>
+            <result name="input">/AddElectionDetails.jsp</result>
+            </action>
+            
+            <action name="PartyAction"  class="com.wipro.evs.action.AdministratorAction" method="addParty">
+            <result name="SUCCESS">/AdminHomePage.jsp</result>
+            <result name="FAILURE">/Failure.jsp</result>
+            <result name="input">/AddPartyDetails.jsp</result>
+            </action>
+            
+            <action name="ViewAllElectionAction"  class="com.wipro.evs.action.AdministratorAction" method="viewAllElectionDetails">
+            <result name="SUCCESS">/ViewAllElections.jsp</result>
+            <result name="NODATA">/NoDataAdmin.jsp</result>
+            </action>
+            
+             <action name="ViewUpcomingElectionAction"  class="com.wipro.evs.action.AdministratorAction" method="viewAllUpcomingElectionDetails">
+            <result name="SUCCESS">/ViewUpcomingElections.jsp</result>
+            <result name="NODATA">/NoDataAdmin.jsp</result>
+            </action>
+            
+             <action name="ViewPartyAction"  class="com.wipro.evs.action.AdministratorAction" method="viewPartyDetails">
+            <result name="SUCCESS">/ViewParty.jsp</result>
+            <result name="NODATA">/NoDataAdmin.jsp</result>
+            </action>
+            
+              <action name="VoterIDRequestAction"  class="com.wipro.evs.action.VoterAction" method="requestVoterID">
+            <result name="SUCCESS">/VoterRequestResult.jsp</result>
+            <result name="FAIL">/VoterRequestResult.jsp</result>
+            <result name="APPLIED">/VoterRequestResult.jsp</result>
+            <result name="REJECTED">/VoterRequestResult.jsp</result>
+            <result name="GENERATED">/VoterRequestResult.jsp</result>
+            </action>
+            
+              <action name="ViewVoterIDRequestAction"  class="com.wipro.evs.action.AdministratorAction" method="viewPendingVoterIDRequests">
+            <result name="SUCCESS">/ViewAdminPending.jsp</result>
+             <result name="NODATA">/NoDataAdmin.jsp</result>
+            </action>
+            
+              <action name="AdminApproveAction"  class="com.wipro.evs.action.AdministratorAction" method="forwardVoterID">
+            <result name="SUCCESS">/ViewAdminPending.jsp</result>
+            <result name="FAILURE">/Failure.jsp</result>
+            </action>
+            
+              <action name="ViewRequestEOAction"  class="com.wipro.evs.action.EOAction" method="viewAllVoterIDRequests">
+            <result name="SUCCESS">/ViewEOPending.jsp</result>
+            <result name="NODATA">/NoDataEO.jsp</result>
+            </action>
+              <action name="EOApproveAction"  class="com.wipro.evs.action.EOAction" method="generateVoterID">
+            <result name="SUCCESS">/ViewEOPending.jsp</result>
+            <result name="FAILURE">/Failure.jsp</result>
+            </action>
+            
+             <action name="ViewVoterID"  class="com.wipro.evs.action.VoterAction" method="viewGeneratedVoterID">
+            <result name="SUCCESS">/ViewVoterID.jsp</result>
+            <result name="FAIL">/ViewVoterID.jsp</result>
+            <result name="PENDING">/ViewVoterID.jsp</result>
+            </action>
+            
+             <action name="AddCandidateAction"  class="com.wipro.evs.action.AdministratorAction" method="addCandidateDetails">
+            <result name="SUCCESS">/AdminHomePage.jsp</result>
+            <result name="FAILURE">/Failure.jsp</result>
+            <result name="input">/AddCandidateDetails.jsp</result>
+            </action>
+            
+             <action name="ViewCandidate-Election"  class="com.wipro.evs.action.AdministratorAction" method="viewCandidateDetailsByElectionID">
+            <result name="SUCCESS">/ViewCandidate-Election.jsp</result>
+            <result name="FAILURE">/Failure.jsp</result>
+            </action>
+            
+              <action name="ViewCandidate-Party"  class="com.wipro.evs.action.AdministratorAction" method="viewCandidateDetailsByParty">
+            <result name="SUCCESS">/ViewCandidate-Election.jsp</result>
+             <result name="NODATA">/NoDataAdmin.jsp</result>
+            </action>
+            
+               <action name="ViewUpcomingElectionByVoterAction"  class="com.wipro.evs.action.AdministratorAction" method="viewAllUpcomingElectionDetails">
+            <result name="SUCCESS">/ViewUpcomingElectionsByVoter.jsp</result>
+            <result name="NODATA">/NoDataVoter.jsp</result>
+            </action>
+            
+               <action name="ViewElectionByNameAction"  class="com.wipro.evs.action.AdministratorAction" method="viewCandidateDetailsByElectionName">
+            <result name="SUCCESS">/ViewCandidate-Election.jsp</result>
+            <result name="NODATA">/NoDataAdmin.jsp</result>
+            <result name="input">/ViewElectionByName.jsp</result>
+            </action>
+            
+               <action name="CastVoteHelpAction"  class="com.wipro.evs.action.VoterAction" method="supportVoting">
+            <result name="SUCCESS">/CastVote.jsp</result>
+            <result name="No Election Today">/NoElection.jsp</result>
+            <result name="VoterID Not Generated">/VoterIDNotGenerated.jsp</result>
+            <result name="ALREADY CASTED”">/AlreadyVoted.jsp</result>
+            </action>
+            
+               <action name="CastVoteAction"  class="com.wipro.evs.action.VoterAction" method="castVote">
+            <result name="SUCCESS">/VoterHomePage.jsp</result>
+            <result name="FAIL">/VoterIDNotGenerated.jsp</result>
+            </action>
+            
+               <action name="ApproveResults"  class="com.wipro.evs.action.AdministratorAction" method="supportApproveResults">
+            <result name="SUCCESS">/ApproveElectionResult.jsp</result>
+            <result name="No Election">/NoElection.jsp</result>
+            <result name="VoterID Not Generated">/VoterIDNotGenerated.jsp</result>
+            </action>
+            
+               <action name="AdminApproveResultAction"  class="com.wipro.evs.action.AdministratorAction" method="adminApprovalOfResults">
+            <result name="SUCCESS">/ApproveElectionResult.jsp</result>
+            <result name="FAILURE">/InsufficientVotes.jsp</result>
+            <result name="VoterID Not Generated">/VoterIDNotGenerated.jsp</result>
+            </action>
+            
+                 <action name="ViewResultAction"  class="com.wipro.evs.action.VoterAction" method="viewElectionResults">
+            <result name="SUCCESS">/ViewResult.jsp</result>
+            <result name="FAILURE">/InsufficientVotes.jsp</result>
+            <result name="VoterID Not Generated">/VoterIDNotGenerated.jsp</result>
+            <result name="NODATA">/NoDataVoter.jsp</result>
+            </action>
+            
+                  <action name="ElectionByName"  class="com.wipro.evs.action.AdministratorAction" method="viewElectionByName">
+            <result name="SUCCESS">/ViewElectionByName.jsp</result>
+            </action>
+            
+                  <action name="GeneratePDFAction"  class="com.wipro.evs.action.VoterAction" method="generatePDFResults">
+            <result name="SUCCESS">/PDF.jsp</result>
+            </action>
+            
+                   
+            <action name="LogoutAction"  class="com.wipro.evs.action.UserAction" method="logout">
+            <result name="SUCCESS">/LoginPage.jsp</result>
+            </action>
+            
+            <action name="ViewElectionByNameActionVoter"  class="com.wipro.evs.action.AdministratorAction" method="viewCandidateDetailsByElectionName">
+            <result name="SUCCESS">/ViewCandidate-Election1.jsp</result>
+            <result name="NODATA">/NoDataVoter.jsp</result>
+            <result name="input">/ViewElectionByName.jsp</result>
+            </action>
+            
+             <action name="ElectionByNameVoter"  class="com.wipro.evs.action.AdministratorAction" method="viewElectionByName">
+            <result name="SUCCESS">/ViewElectionByName1.jsp</result>
+            </action>
+ 
+        
+    </package>
+</struts>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators [ 
+
+<!ELEMENT validators (field|validator)+>
+
+<!ELEMENT field (field-validator+)>
+<!ATTLIST field
+	name CDATA #REQUIRED
+>
+
+<!ELEMENT field-validator (param*, message)>
+<!ATTLIST field-validator
+	type CDATA #REQUIRED
+    short-circuit (true|false) "false"
+>
+
+<!ELEMENT validator (param*, message)>
+<!ATTLIST validator
+	type CDATA #REQUIRED
+    short-circuit (true|false) "false"
+>
+
+<!ELEMENT param (#PCDATA)>
+<!ATTLIST param
+    name CDATA #REQUIRED
+>
+
+<!ELEMENT message (#PCDATA)>
+<!ATTLIST message
+    key CDATA #IMPLIED
+>
+
+
+]>
+
+<validators>
+	<field name="candidateBean.name">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Name is required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">20</param>
+			<message>Name should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="candidateBean.partyID">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Party ID is required</message>
+		</field-validator>
+	</field>
+	
+	<field name="dateOfBirth">
+		<field-validator type="required" short-circuit="true">
+			<message>DOB is Required</message>
+		</field-validator>	
+	</field>
+	
+	<field name="candidateBean.address">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Address is Required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">50</param>
+			<message>State should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	
+	<field name="candidateBean.mobileNo">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Mobile Number is Required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="minLength">10</param>
+			<param name="maxLength">10</param>
+			<message>Mobile Number should contain exactly ${minLength} Numbers</message>
+		</field-validator>
+		<field-validator type="regex" short-circuit="true">
+		    <param name="expression"><![CDATA[\d{10}]]></param>
+		    <message>Mobile Number is Not Valid</message>  
+		</field-validator>
+	</field>
+	
+	<field name="candidateBean.emailID">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>EmailID is Required</message>
+		</field-validator>
+		<field-validator type="email" short-circuit="true">
+			<message>Email address not valid</message>
+		</field-validator>
+	</field>
+	
+</validators>

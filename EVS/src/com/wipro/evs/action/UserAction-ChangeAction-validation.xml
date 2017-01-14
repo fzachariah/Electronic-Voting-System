@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators [ 
+
+<!ELEMENT validators (field|validator)+>
+
+<!ELEMENT field (field-validator+)>
+<!ATTLIST field
+	name CDATA #REQUIRED
+>
+
+<!ELEMENT field-validator (param*, message)>
+<!ATTLIST field-validator
+	type CDATA #REQUIRED
+    short-circuit (true|false) "false"
+>
+
+<!ELEMENT validator (param*, message)>
+<!ATTLIST validator
+	type CDATA #REQUIRED
+    short-circuit (true|false) "false"
+>
+
+<!ELEMENT param (#PCDATA)>
+<!ATTLIST param
+    name CDATA #REQUIRED
+>
+
+<!ELEMENT message (#PCDATA)>
+<!ATTLIST message
+    key CDATA #IMPLIED
+>
+
+
+]>
+
+<validators>
+	<field name="password">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Password is Required</message>
+		</field-validator>
+	<field-validator type="stringlength" short-circuit="true">
+			<param name="minLength">4</param>
+			<param name="maxLength">12</param>
+			<message>Password should have minimum ${minLength} and maximum ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="newPassword">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Required</message>
+		</field-validator>
+	<field-validator type="stringlength" short-circuit="true">
+			<param name="minLength">4</param>
+			<param name="maxLength">12</param>
+			<message>Password should have minimum ${minLength} and maximum ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="rePassword">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Required</message>
+		</field-validator>
+	<field-validator type="stringlength" short-circuit="true">
+			<param name="minLength">4</param>
+			<param name="maxLength">12</param>
+			<message>Password should have minimum ${minLength} and maximum ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+</validators>

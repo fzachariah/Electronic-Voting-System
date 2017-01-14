@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators [ 
+
+<!ELEMENT validators (field|validator)+>
+
+<!ELEMENT field (field-validator+)>
+<!ATTLIST field
+	name CDATA #REQUIRED
+>
+
+<!ELEMENT field-validator (param*, message)>
+<!ATTLIST field-validator
+	type CDATA #REQUIRED
+    short-circuit (true|false) "false"
+>
+
+<!ELEMENT validator (param*, message)>
+<!ATTLIST validator
+	type CDATA #REQUIRED
+    short-circuit (true|false) "false"
+>
+
+<!ELEMENT param (#PCDATA)>
+<!ATTLIST param
+    name CDATA #REQUIRED
+>
+
+<!ELEMENT message (#PCDATA)>
+<!ATTLIST message
+    key CDATA #IMPLIED
+>
+
+
+]>
+
+<validators>
+	<field name="profileBean.firstName">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>FirstName is required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">15</param>
+			<message>FirstName should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="profileBean.lastName">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>LastName is required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">15</param>
+			<message>LastName should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="dateOfBirth1">
+		<field-validator type="required" short-circuit="true">
+			<message>DOB is Required</message>
+		</field-validator>	
+	</field>
+	
+	<field name="profileBean.street">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Street is Required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">30</param>
+			<message>Street should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="profileBean.location">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Location is Required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">15</param>
+			<message>Location should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="profileBean.city">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>City is Required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">15</param>
+			<message>City should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="profileBean.state">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>State is Required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">15</param>
+			<message>State should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+	</field>
+	
+	<field name="profileBean.pincode">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Pincode is Required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="maxLength">10</param>
+			<message>Pincode should contain maximum of ${maxLength} characters</message>
+		</field-validator>
+		<field-validator type="regex" short-circuit="true">
+		    <param name="expression"><![CDATA[\d{6}]]></param>
+		    <message>Pincode is not valid</message>  
+		</field-validator>
+	</field>
+	
+	<field name="profileBean.mobileNo">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Mobile Number is Required</message>
+		</field-validator>
+		<field-validator type="stringlength" short-circuit="true">
+			<param name="minLength">10</param>
+			<param name="maxLength">10</param>
+			<message>Mobile Number should contain exactly ${minLength} Numbers</message>
+		</field-validator>
+		<field-validator type="regex" short-circuit="true">
+		    <param name="expression"><![CDATA[\d{10}]]></param>
+		    <message>Mobile Number is Not Valid</message>  
+		</field-validator>
+	</field>
+	
+	<field name="profileBean.emailID">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>EmailID is Required</message>
+		</field-validator>
+		<field-validator type="email" short-circuit="true">
+			<message>Email address not valid</message>
+		</field-validator>
+	</field>
+	
+</validators>
